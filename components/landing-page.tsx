@@ -41,10 +41,10 @@ export function LandingPage() {
       } else {
         setFormStatus({
           type: 'error',
-          message: 'Failed to send message. Please try again later.'
+          message: result.error || 'Failed to send message. Please try again later.'
         })
       }
-    } catch (error) {
+    } catch {
       setFormStatus({
         type: 'error',
         message: 'An error occurred. Please try again.'

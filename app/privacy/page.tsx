@@ -36,7 +36,7 @@ export default function PrivacyPolicy() {
               <li>Only used for real-time display during meditation sessions</li>
               <li>Never stored on our servers</li>
               <li>Never shared with third parties</li>
-              <li>Only accessed when you grant permission through your device's health settings</li>
+              <li>Only accessed when you grant permission through your device&apos;s health settings</li>
             </ul>
           </section>
 
@@ -62,9 +62,9 @@ export default function PrivacyPolicy() {
               You have complete control over your data:
             </p>
             <ul className="list-disc ml-6 mt-2 space-y-2">
-              <li>You can revoke heart rate access at any time through your device settings</li>
+              <li>You can revoke heart rate access at any time through your device&apos;s settings</li>
               <li>You can clear all local app data by deleting and reinstalling the app</li>
-              <li>No data recovery is possible after deletion as we don't store any data on servers</li>
+              <li>No data recovery is possible after deletion as we don&apos;t store any data on servers</li>
             </ul>
           </section>
 
@@ -81,7 +81,7 @@ export default function PrivacyPolicy() {
 
           <footer className="pt-8 mt-8 border-t border-gray-200">
             <p className="text-sm text-gray-500">
-              Last updated: February 2024
+              Last updated: November  2024
             </p>
           </footer>
         </div>
