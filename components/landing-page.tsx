@@ -2,29 +2,29 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState, useTransition } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BookHeart, Timer, LineChart, Flame } from "lucide-react"
 import { sendEmail } from "@/app/actions/send-email"
 
 export function LandingPage() {
   const [platform, setPlatform] = useState("ios")
-  const [isPending, startTransition] = useTransition()
   const [message, setMessage] = useState("")
   const [email, setEmail] = useState("")
   const [formStatus, setFormStatus] = useState<{
     type: 'success' | 'error' | null,
     message: string
   }>({ type: null, message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setIsSubmitting(true)
     
-    startTransition(async () => {
+    try {
       const formData = new FormData()
       formData.append('email', email)
       formData.append('message', message)
@@ -44,8 +44,21 @@ export function LandingPage() {
           message: 'Failed to send message. Please try again later.'
         })
       }
-    })
+    } catch (error) {
+      setFormStatus({
+        type: 'error',
+        message: 'An error occurred. Please try again.'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
+
+  const screenshots = [
+    '/images/screenshots/Simulator Screenshot - iPhone 16 Pro - 2024-11-01 at 20.40.17.png',
+    '/images/screenshots/Simulator Screenshot - iPhone 16 Pro - 2024-11-01 at 15.49.41.png',
+    '/images/screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2024-11-01 at 09.48.03.png'
+  ]
 
   return (
     <div className="flex flex-col min-h-screen bg-yellow-50">
@@ -77,35 +90,33 @@ export function LandingPage() {
           journal your sessions, and track your progress and streaks.
         </p>
         
-        {/* Platform Tabs */}
-        <Tabs defaultValue="ios" className="max-w-[400px] mx-auto mb-8">
-          <TabsList className="grid w-full grid-cols-2 p-1 rounded-full bg-yellow-100">
-            <TabsTrigger 
-              value="ios" 
+        {/* Platform Selection */}
+        <div className="max-w-[400px] mx-auto mb-8">
+          <div className="grid w-full grid-cols-2 p-1 rounded-full bg-yellow-100">
+            <button 
               onClick={() => setPlatform("ios")}
-              className="rounded-full data-[state=active]:bg-yellow-400 data-[state=active]:text-gray-900 transition-all"
+              className={`rounded-full py-2 transition-all ${
+                platform === "ios" ? "bg-yellow-400 text-gray-900" : "text-gray-600"
+              }`}
             >
               iOS
-            </TabsTrigger>
-            <TabsTrigger 
-              value="android" 
+            </button>
+            <button 
               onClick={() => setPlatform("android")}
-              className="rounded-full data-[state=active]:bg-yellow-400 data-[state=active]:text-gray-900 transition-all"
+              className={`rounded-full py-2 transition-all ${
+                platform === "android" ? "bg-yellow-400 text-gray-900" : "text-gray-600"
+              }`}
             >
               Android
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
+            </button>
+          </div>
+        </div>
 
         {platform === "ios" ? (
           <Link href="https://apps.apple.com" target="_blank">
-            {/* <Image
-              src="/images/app-store-badge.png"
-              alt="Download on the App Store"
-              width={200}
-              height={60}
-              className="mx-auto"
-            /> */}
+            <Button className="rounded-full bg-yellow-400 hover:bg-yellow-500 px-8 py-3">
+              Download on the App Store
+            </Button>
           </Link>
         ) : (
           <div className="p-4 text-lg font-medium text-gray-600 bg-yellow-100 rounded-lg">
@@ -150,14 +161,10 @@ export function LandingPage() {
 
       {/* App Screenshots */}
       <section className="container px-4 py-16 mx-auto">
-        <h2 className="mb-12 text-3xl font-bold text-center text-gray-900"></h2>
+        <h2 className="mb-12 text-3xl font-bold text-center text-gray-900">App Screenshots</h2>
         {platform === "ios" ? (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-            {[
-              "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20Max%20-%202024-11-01%20at%2009.59.05-2luXFJQlBZxlckwnH6ueqDcm1EZmfx.png",
-              "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20Max%20-%202024-11-01%20at%2009.58.47-Y7ay6AWGVBhEJeOmHKj1FsGFchZvmx.png",
-              "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20Max%20-%202024-11-01%20at%2009.48.03-BNyPa3E8iFCmdAVlbwboU71ltUJlS5.png"
-            ].map((src, index) => (
+            {screenshots.map((src, index) => (
               <div key={index} className="relative aspect-[9/19] max-w-[280px] mx-auto w-full shadow-xl rounded-[2rem] overflow-hidden bg-white p-2">
                 <Image
                   src={src}
@@ -184,33 +191,31 @@ export function LandingPage() {
           <CardContent className="p-6">
             <h2 className="mb-6 text-2xl font-bold text-center text-gray-900">Contact Us</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="relative">
+              <div>
                 <Input
                   type="email"
                   placeholder="Enter your email"
-                  className="bg-white !outline-none"
+                  className="bg-white"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  autoComplete="off"
                 />
               </div>
-              <div className="relative">
+              <div>
                 <Textarea
                   placeholder="Your message or feedback"
-                  className="min-h-[150px] bg-white !outline-none"
+                  className="min-h-[150px] bg-white"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   required
-                  autoComplete="off"
                 />
               </div>
               <Button 
                 type="submit" 
                 className="w-full bg-yellow-400 hover:bg-yellow-500 rounded-full"
-                disabled={isPending}
+                disabled={isSubmitting}
               >
-                {isPending ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
               {formStatus.type && (
                 <div 
@@ -219,7 +224,6 @@ export function LandingPage() {
                       ? 'bg-green-100 text-green-800' 
                       : 'bg-red-100 text-red-800'
                   }`}
-                  role="alert"
                 >
                   {formStatus.message}
                 </div>
