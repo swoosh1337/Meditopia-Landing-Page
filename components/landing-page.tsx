@@ -83,10 +83,10 @@ export function LandingPage() {
       {/* Hero Section */}
       <section className="container px-4 py-24 mx-auto text-center">
         <h1 className="mb-6 text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-          Find Peace with Transcendental Meditation
+          Find Peace with Meditopia
         </h1>
         <p className="mx-auto mb-8 text-xl text-gray-600 max-w-2xl">
-          Experience deep relaxation with our Transcendental Meditation app. Set a custom meditation timer,
+          Experience deep relaxation with our Meditation app. Set a custom meditation timer,
           journal your sessions, and track your progress and streaks.
         </p>
         
@@ -235,7 +235,7 @@ export function LandingPage() {
 
       {/* Footer */}
       <footer className="py-8 mt-auto text-center text-gray-600 bg-yellow-100">
-        <p>© 2024 Transcendental Meditation App. All rights reserved.</p>
+        <p>© 2025 Meditopia. All rights reserved.</p>
       </footer>
     </div>
   )

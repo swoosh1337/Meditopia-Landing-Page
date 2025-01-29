@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "TM App - Transcendental Meditation",
-  description: "Experience deep relaxation with our Transcendental Meditation app",
+  title: "Meditation App - Meditopia",
+  description: "Experience deep relaxation with our Meditation App - Meditopia",
 };
 
 export default function RootLayout({
