@@ -55,9 +55,9 @@ export function LandingPage() {
   }
 
   const screenshots = [
-    '/images/screenshots/Simulator Screenshot - iPhone 16 Pro - 2024-11-01 at 20.40.17.png',
-    '/images/screenshots/Simulator Screenshot - iPhone 16 Pro - 2024-11-01 at 15.49.41.png',
-    '/images/screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2024-11-01 at 09.48.03.png'
+    '/images/screenshots/screen1.png',
+    '/images/screenshots/screen2.png',
+    '/images/screenshots/screen3.png'
   ]
 
   return (
