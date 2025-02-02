@@ -16,7 +16,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Meditation App - Meditopia",
+  title:  "Meditopia App",
   description: "Experience deep relaxation with our Meditation App - Meditopia",
 };
 
