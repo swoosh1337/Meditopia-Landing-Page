@@ -65,7 +65,7 @@ export function LandingPage() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 w-full border-b bg-yellow-50/80 backdrop-blur-sm">
         <div className="container flex items-center justify-between h-16 px-4 mx-auto">
-          <Link href="/" className="text-2xl font-bold">Meditopia App</Link>
+          <Link href="/" className="text-2xl font-bold">Meditrace</Link>
           <div className="flex items-center gap-4">
             <Link href="#features">
               <Button variant="ghost" className="rounded-full text-gray-600 hover:text-gray-900 hover:bg-yellow-100">Features</Button>
@@ -235,7 +235,7 @@ export function LandingPage() {
 
       {/* Footer */}
       <footer className="py-8 mt-auto text-center text-gray-600 bg-yellow-100">
-        <p>© 2025 Meditopia. All rights reserved.</p>
+        <p>© 2025 Meditrace. All rights reserved.</p>
       </footer>
     </div>
   )

@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title:  "Meditopia App",
-  description: "Experience deep relaxation with our Meditation App - Meditopia",
+  title:  "Meditrace",
+  description: "Experience deep relaxation with our Meditation App - Meditrace",
 };
 
 export default function RootLayout({
