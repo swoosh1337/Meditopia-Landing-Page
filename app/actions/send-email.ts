@@ -24,7 +24,7 @@ export async function sendEmail(formData: FormData) {
         'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Meditopia App <onboarding@resend.dev>',
+        from: 'Meditrace App <onboarding@resend.dev>',
         to: 'tazigrigolia@gmail.com',
         subject: 'New Contact Form Submission',
         text: `New message from ${email}:\n\n${message}`,
