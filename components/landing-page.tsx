@@ -83,7 +83,7 @@ export function LandingPage() {
       {/* Hero Section */}
       <section className="container px-4 py-24 mx-auto text-center">
         <h1 className="mb-6 text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-          Find Peace with Meditopia
+          Find Peace with Meditrace
         </h1>
         <p className="mx-auto mb-8 text-xl text-gray-600 max-w-2xl">
           Experience deep relaxation with our Meditation app. Set a custom meditation timer,

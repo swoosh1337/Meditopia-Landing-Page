@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Overview</h2>
             <p>
-             Meditopia is committed to protecting your privacy. This Privacy Policy explains our practices regarding data collection and usage.
+             Meditrace is committed to protecting your privacy. This Privacy Policy explains our practices regarding data collection and usage.
             </p>
           </section>
 
