@@ -73,7 +73,7 @@ export function LandingPage() {
             <Link href="#contact">
               <Button variant="ghost" className="rounded-full text-gray-600 hover:text-gray-900 hover:bg-yellow-100">Contact</Button>
             </Link>
-            <Link href="https://apps.apple.com" target="_blank">
+            <Link href="https://apps.apple.com/us/app/meditrace/id6737521772" target="_blank">
               <Button className="rounded-full bg-yellow-400 hover:bg-yellow-500">Download App</Button>
             </Link>
           </div>
